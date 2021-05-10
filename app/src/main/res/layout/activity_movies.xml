@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorOnPrimary"
+    android:orientation="vertical"
+    tools:context=".ui.dashboard.MoviesActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/mainToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorToolbar"
+        android:elevation="5dp"
+        app:navigationIconTint="?attr/colorTextToolbar"
+        app:titleTextColor="?attr/colorTextToolbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/moviesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="8dp"
+        android:clipToPadding="false"
+        android:paddingTop="16dp" />
+</LinearLayout>

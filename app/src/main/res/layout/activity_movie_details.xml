@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movieModel"
+            type="com.android.movies.models.MovieModel" />
+
+        <variable
+            name="detailsViewModel"
+            type="com.android.movies.ui.details.view_model.MovieDetailsViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorOnPrimary"
+        android:orientation="vertical"
+        tools:context=".ui.details.MovieDetailsActivity">
+
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/detailsToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorToolbar"
+            android:elevation="5dp"
+            app:navigationIconTint="?attr/colorTextToolbar">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/toolbarTitleDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="52dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{movieModel.title}"
+                    android:textColor="?attr/colorTextToolbar"
+                    android:textSize="18sp" />
+
+
+                <ImageView
+                    android:id="@+id/favoriteImageView"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="16dp"
+                    setFavoriteIcon="@{movieModel.isFavorite}"
+                     />
+            </FrameLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="42dp"
+                    android:layout_marginTop="32dp"
+                    app:cardBackgroundColor="?attr/colorOnPrimary"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="5dp">
+
+                    <ImageView
+                        android:id="@+id/movieDetailsImageView"
+                        setImage="@{movieModel.posterPath}"
+                        android:layout_width="match_parent"
+                        android:layout_height="380dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_baseline_local_movies_24" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/movieDetailsTitleTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@{movieModel.title}"
+                    android:textColor="?attr/colorTextPrimary"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/movieDetailsOriginalTitleTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="16dp"
+                    android:gravity="center"
+                    android:text="@{movieModel.originalTitle}"
+                    android:textColor="?attr/colorTextSecondary"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/movieDetailsDateTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{movieModel.releaseDate}"
+                    android:textColor="?attr/colorTextSecondary" />
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/ratingTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="@{String.valueOf(movieModel.voteAverage)}"
+                        android:textColor="@color/yellow"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatRatingBar
+                        android:id="@+id/movieDetailsRating"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:numStars="10"
+                        android:rating="@{movieModel.voteAverage}"
+                        android:stepSize="0.1" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/movieDetailsOverviewTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:paddingBottom="16dp"
+                    android:text="@{movieModel.overview}"
+                    android:textColor="?attr/colorTextSecondary"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

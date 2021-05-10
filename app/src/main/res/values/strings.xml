@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Movies</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="popular">Popular</string>
+    <string name="my_favorites">My Favorites</string>
+    <string name="my_movies">My Movies</string>
+    <string name="refresh">Refresh</string>
+    <string name="no_connection">No Internet Connection</string>
+</resources>
