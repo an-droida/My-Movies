@@ -19,6 +19,7 @@ class MoviesViewModel(private val movieRepository: MovieRepository) : ViewModel(
     val allMovieResponse: MutableLiveData<BaseResponse<List<MovieModel>>> = MutableLiveData()
     val favoritesResponse: MutableLiveData<List<MovieModel>> = MutableLiveData()
     val pageCount:MutableLiveData<Int> = MutableLiveData()
+    val currentPage:MutableLiveData<Int> = MutableLiveData()
 
     fun getTopRatedMovies(page:String) = viewModelScope.launch {
         allMovieResponse.postValue(BaseResponse.Loading())
@@ -57,6 +58,7 @@ class MoviesViewModel(private val movieRepository: MovieRepository) : ViewModel(
             response.body()?.let {
                 if (it.results!!.isNotEmpty()) {
                     pageCount.postValue(it.totalPages)
+                    currentPage.postValue(it.page)
                     return BaseResponse.Success(it.results!!)
                 }
             }

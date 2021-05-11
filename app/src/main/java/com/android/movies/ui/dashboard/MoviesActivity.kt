@@ -104,11 +104,13 @@ class MoviesActivity : AppCompatActivity() {
     }
 
     private fun connected() {
-        binding.moviesRecyclerView.visibility = View.VISIBLE
-        when (movieListType) {
-            0 -> viewModel.getAllMovies("1")
-            1 -> viewModel.getPopularMovies("1")
-            2 -> viewModel.getTopRatedMovies("1")
+        if(binding.moviesRecyclerView.visibility == View.INVISIBLE) {
+            binding.moviesRecyclerView.visibility = View.VISIBLE
+            when (movieListType) {
+                0 -> viewModel.getAllMovies(viewModel.currentPage.value.toString())
+                1 -> viewModel.getPopularMovies(viewModel.currentPage.value.toString())
+                2 -> viewModel.getTopRatedMovies(viewModel.currentPage.value.toString())
+            }
         }
         snackBar.dismiss()
     }
